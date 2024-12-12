@@ -34,7 +34,7 @@ class Dataset:
                 self.df[col] = le.transform(self.df[col])
 
         # Replcae missing values
-        self.df = self.df.replace('?', np.NaN)
+        self.df = self.df.replace('?', np.nan)
         self.df = self.df.fillna(self.df.median())
         # df = df.astype('int32')
 
