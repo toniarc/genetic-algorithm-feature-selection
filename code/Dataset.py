@@ -7,6 +7,73 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
 
 class Dataset:
+    """
+    A class used to represent a Dataset for machine learning tasks.
+
+    Attributes
+    ----------
+    df : pandas.DataFrame
+        The raw data read from the file.
+    df_sampled : pandas.DataFrame
+        The sampled data (shuffled if specified).
+    label : int
+        The index of the label column.
+    clf : sklearn.base.BaseEstimator
+        The classifier used for training and evaluation.
+    X : numpy.ndarray
+        The feature matrix.
+    y : numpy.ndarray
+        The target vector.
+    X_train : numpy.ndarray
+        The training feature matrix.
+    y_train : numpy.ndarray
+        The training target vector.
+    X_val : numpy.ndarray
+        The validation feature matrix.
+    y_val : numpy.ndarray
+        The validation target vector.
+    X_test : numpy.ndarray
+        The test feature matrix.
+    y_test : numpy.ndarray
+        The test target vector.
+    features : list
+        The list of selected features.
+    instances : list
+        The list of selected instances.
+    ValidationAccuracy : float
+        The accuracy on the validation set.
+    TestAccuracy : float
+        The accuracy on the test set.
+    CV : float
+        The cross-validation score.
+
+    Methods
+    -------
+    __init__(file_path, sep, label, divide_dataset=True, header=None)
+        Initializes the Dataset object by reading the data file and preprocessing it.
+    divide_dataset(classifier, normalize=True, shuffle=True, all_features=True, all_instances=True, evaluate=True, partial_sample=False)
+        Divides the dataset into training, validation, and test sets, and optionally evaluates the classifier.
+    fit_classifier()
+        Trains the classifier on the training set.
+    set_validation_accuracy()
+        Evaluates the classifier on the validation set and sets the validation accuracy.
+    set_test_accuracy()
+        Evaluates the classifier on the test set and sets the test accuracy.
+    set_CV(folds=5)
+        Performs cross-validation and sets the cross-validation score.
+    set_train_set(selected_instances)
+        Sets the training set to the selected instances.
+    set_features(selected_features)
+        Sets the features to the selected features.
+    set_instances(selected_instances)
+        Sets the instances to the selected instances.
+    get_validation_accuracy()
+        Returns the validation accuracy.
+    get_test_accuracy()
+        Returns the test accuracy.
+    get_CV()
+        Returns the cross-validation score.
+    """
 
     # The init method or constructor
     def __init__(self, file_path, sep, label, divide_dataset=True, header=None):
